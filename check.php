@@ -141,7 +141,7 @@ $mail->Port = 587;
 $mail->From = "igogaleri@gmail.com";
 $mail->FromName = "Igo Galeri";
 
-$mail->addAddress("srihernogo@gmail.com", "Sri Hernogo");
+$mail->addAddress("rizkipratama122019@gmail.com", "Rizki Pratama");
 
 $mail->isHTML(true);
 
